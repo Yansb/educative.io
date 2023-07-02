@@ -1,9 +1,5 @@
 package io.datajek.spring.basics.movierecommendersystem.movie;
 
-import jakarta.annotation.PostConstruct;
-import jakarta.annotation.PreDestroy;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -13,7 +9,6 @@ import org.springframework.stereotype.Component;
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Movie {
     private static int instances = 0;
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private int id;
     private String name;
     private String genre;
@@ -35,15 +30,5 @@ public class Movie {
         //if producers are same add 0.5 to similarity
 
         return similarity;
-    }
-
-    @PostConstruct
-    private void postConstruct() {
-        logger.info("In Movie postConstruct method..");
-    }
-
-    @PreDestroy
-    private void preDestroy() {
-        logger.info("In Movie preDestroy method..");
     }
 }

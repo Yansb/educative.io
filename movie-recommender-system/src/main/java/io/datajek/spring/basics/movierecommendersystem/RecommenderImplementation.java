@@ -1,10 +1,6 @@
 package io.datajek.spring.basics.movierecommendersystem;
 
 import io.datajek.spring.basics.movierecommendersystem.filters.Filter;
-import jakarta.annotation.PostConstruct;
-import jakarta.annotation.PreDestroy;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.inject.Named;
 
@@ -12,7 +8,6 @@ import javax.inject.Named;
 @Named
 public class RecommenderImplementation {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final Filter filter;
 
     public RecommenderImplementation(Filter filter) {
@@ -35,13 +30,4 @@ public class RecommenderImplementation {
         return filter;
     }
 
-    @PostConstruct
-    public void postConstruct() {
-        logger.info("In RecommenderImplementation postConstruct method..");
-    }
-
-    @PreDestroy
-    public void preDestroy() {
-        logger.info("In RecommenderImplementation preDestroy method..");
-    }
 }
