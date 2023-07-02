@@ -1,4 +1,4 @@
-package io.datajek.spring.baiscs.movierecommendersystem.filters;
+package io.datajek.spring.basics.movierecommendersystem.filters;
 
 import org.springframework.stereotype.Component;
 
