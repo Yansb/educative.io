@@ -11,7 +11,12 @@ import java.util.Arrays;
 public class MovieRecommenderSystemApplication {
 
 	public static void main(String[] args) {
-		final var recommender = new RecommenderImplementation(new CollaborativeFilter());
+		final var appContext = SpringApplication.run(
+				MovieRecommenderSystemApplication.class, args
+		);
+
+		final var recommender = appContext.getBean(RecommenderImplementation.class);
+
 		final var result = recommender.recommendMovies("Finding Dory");
 
 		System.out.println(Arrays.toString(result));
