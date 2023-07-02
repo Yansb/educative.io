@@ -1,8 +1,8 @@
 package io.datajek.spring.basics.movierecommendersystem.filters;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service("CF")
 public class CollaborativeFilter implements Filter {
 
     public String[] getRecommendations(String movie) {

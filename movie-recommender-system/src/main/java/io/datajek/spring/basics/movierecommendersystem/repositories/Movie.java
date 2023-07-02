@@ -1,10 +1,13 @@
-package io.datajek.spring.basics.movierecommendersystem.movie;
+package io.datajek.spring.basics.movierecommendersystem.repositories;
 
-import org.springframework.stereotype.Component;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository
 public class Movie {
     private static int instances = 0;
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private int id;
     private String name;
     private String genre;

@@ -1,19 +1,25 @@
 package io.datajek.spring.basics.movierecommendersystem.filters;
 
-import io.datajek.spring.basics.movierecommendersystem.movie.Movie;
-import org.springframework.stereotype.Component;
+import io.datajek.spring.basics.movierecommendersystem.repositories.Movie;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 
-@Component
+@Service("CBF")
+@Primary
 public class ContentBasedFilter implements Filter {
     private static int instances = 0;
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final Movie movie;
 
     public ContentBasedFilter(Movie movie) {
         this.movie = Objects.requireNonNull(movie);
         instances++;
+        logger.info("In ContentBasedFilter constructor method");
     }
 
     public static int getInstances() {
