@@ -7,17 +7,19 @@ import org.springframework.stereotype.Component;
 
 
 @Component()
-public class RecommenderImplementation {
+public class RecommenderImplementation2 {
 
-    private final Filter filter;
-
-    @Autowired
-    public RecommenderImplementation(@Qualifier("CF") Filter filter) {
-        this.filter = filter;
-    }
+    private Filter filter;
 
     public String[] recommendMovies(String movie) {
         System.out.println("Name of the filter in use: " + filter + "\n");
         return this.filter.getRecommendations(movie);
+    }
+
+    @Autowired
+    @Qualifier("CBF")
+    public void setFilter(Filter filter) {
+        this.filter = filter;
+        System.out.println("Setter method invoked!");
     }
 }
