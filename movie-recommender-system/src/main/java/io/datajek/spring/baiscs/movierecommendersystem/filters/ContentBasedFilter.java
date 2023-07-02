@@ -1,9 +1,12 @@
 package io.datajek.spring.baiscs.movierecommendersystem.filters;
 
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component("CBF")
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Primary
 public class ContentBasedFilter implements Filter {
 
