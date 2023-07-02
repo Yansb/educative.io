@@ -5,15 +5,19 @@ import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+
+import javax.inject.Named;
 
 
-@Component()
+@Named
 public class RecommenderImplementation {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    private Filter filter;
+    private final Filter filter;
+
+    public RecommenderImplementation(Filter filter) {
+        this.filter = filter;
+    }
 
 
     public String[] recommendMovies(String movie) {
@@ -21,10 +25,14 @@ public class RecommenderImplementation {
         return this.filter.getRecommendations(movie);
     }
 
-    @Autowired
-    public void setFilter(Filter filter) {
-        logger.info("In RecommenderImplementation setter method..depedency injection");
-        this.filter = filter;
+//    @Autowired
+//    public void setFilter(Filter filter) {
+//        logger.info("In RecommenderImplementation setter method..depedency injection");
+//        this.filter = filter;
+//    }
+
+    public Filter getFilter() {
+        return filter;
     }
 
     @PostConstruct

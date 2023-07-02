@@ -6,11 +6,11 @@ import jakarta.annotation.PreDestroy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
 
+import javax.inject.Named;
 import java.util.Objects;
 
-@Component("CBF")
+@Named
 @Primary
 public class ContentBasedFilter implements Filter {
     private static int instances = 0;

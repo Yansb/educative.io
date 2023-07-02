@@ -1,6 +1,5 @@
 package io.datajek.spring.basics.movierecommendersystem;
 
-import io.datajek.spring.basics.movierecommendersystem.movie.Movie;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
@@ -23,11 +22,8 @@ public class MovieRecommenderSystemApplication {
 
         final var recommender = appContext.getBean(RecommenderImplementation.class);
         System.out.println(recommender);
+        System.out.println(recommender.getFilter());
 
-        final var m1 = appContext.getBean(Movie.class);
-        System.out.println(m1);
-        final var m2 = appContext.getBean(Movie.class);
-        System.out.println(m2);
     }
 
 }
