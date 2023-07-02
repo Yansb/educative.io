@@ -1,13 +1,11 @@
 package io.datajek.spring.basics.movierecommendersystem.filters;
 
 import io.datajek.spring.basics.movierecommendersystem.movie.Movie;
-import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
 
-import javax.inject.Named;
 import java.util.Objects;
 
-@Named
-@Primary
+@Component
 public class ContentBasedFilter implements Filter {
     private static int instances = 0;
 

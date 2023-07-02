@@ -1,8 +1,8 @@
 package io.datajek.spring.basics.movierecommendersystem.filters;
 
-import javax.inject.Named;
+import org.springframework.stereotype.Component;
 
-@Named
+@Component
 public class CollaborativeFilter implements Filter {
 
     public String[] getRecommendations(String movie) {

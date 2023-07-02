@@ -1,16 +1,14 @@
 package io.datajek.spring.basics.movierecommendersystem;
 
 import io.datajek.spring.basics.movierecommendersystem.filters.Filter;
+import org.springframework.beans.factory.annotation.Qualifier;
 
-import javax.inject.Named;
 
-
-@Named
 public class RecommenderImplementation {
 
     private final Filter filter;
 
-    public RecommenderImplementation(Filter filter) {
+    public RecommenderImplementation(@Qualifier("contentBasedFilter") Filter filter) {
         this.filter = filter;
     }
 
