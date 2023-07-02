@@ -9,12 +9,7 @@ import org.springframework.stereotype.Component;
 public class RecommenderImplementation {
 
     @Autowired
-    private final Filter filter;
-
-    public RecommenderImplementation(Filter filter) {
-        super();
-        this.filter = filter;
-    }
+    private Filter filter;
 
     public String[] recommendMovies(String movie) {
         System.out.println("Name of the filter in use: " + filter + "\n");
