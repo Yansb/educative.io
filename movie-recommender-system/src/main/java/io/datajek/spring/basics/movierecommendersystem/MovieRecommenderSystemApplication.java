@@ -1,20 +1,12 @@
 package io.datajek.spring.basics.movierecommendersystem;
 
 import io.datajek.spring.basics.movierecommendersystem.Recomendation.RecommenderImplementation;
-import io.datajek.spring.basics.movierecommendersystem.repositories.Movie;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.FilterType;
+import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {
-        "io.datajek.spring.basics.otherPackage",
-})
-@ComponentScan(includeFilters = @ComponentScan.Filter(
-        type = FilterType.REGEX,
-        pattern = "io.datajek.spring.basics.movierecommendersystem.*"
-))
+@PropertySource("classpath:application.properties")
 public class MovieRecommenderSystemApplication {
 
     public static void main(String[] args) {
@@ -23,12 +15,7 @@ public class MovieRecommenderSystemApplication {
         );
 
         final var recommender = appContext.getBean(RecommenderImplementation.class);
-        System.out.println(recommender);
-
-        final var m1 = appContext.getBean(Movie.class);
-        System.out.println(m1);
-        final var m2 = appContext.getBean(Movie.class);
-        System.out.println(m2);
+        System.out.println(recommender.getFavoriteMovie());
     }
 
 }

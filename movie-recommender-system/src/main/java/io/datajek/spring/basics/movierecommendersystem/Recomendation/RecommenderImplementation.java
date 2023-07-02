@@ -4,6 +4,7 @@ import io.datajek.spring.basics.movierecommendersystem.filters.Filter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 
@@ -11,8 +12,9 @@ import org.springframework.stereotype.Service;
 public class RecommenderImplementation {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    @Value("${recommender.implementation.favoriteMovie}: Finding Dory")
+    private String favoriteMovie;
     private Filter filter;
-
 
     public String[] recommendMovies(String movie) {
         System.out.println("Name of the filter in use: " + filter + "\n");
@@ -23,5 +25,9 @@ public class RecommenderImplementation {
     public void setFilter(Filter filter) {
         logger.info("In RecommenderImplementation setter method..depedency injection");
         this.filter = filter;
+    }
+
+    public String getFavoriteMovie() {
+        return favoriteMovie;
     }
 }
