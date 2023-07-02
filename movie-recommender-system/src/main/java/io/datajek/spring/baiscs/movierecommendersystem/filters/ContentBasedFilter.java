@@ -1,6 +1,6 @@
-package io.datajek.spring.baiscs.movierecommendersystem;
+package io.datajek.spring.baiscs.movierecommendersystem.filters;
 
-public class ContentBasedFilter {
+public class ContentBasedFilter implements Filter{
 
     public String[] getRecommendations(String movie) {
         // logic of content based filter
