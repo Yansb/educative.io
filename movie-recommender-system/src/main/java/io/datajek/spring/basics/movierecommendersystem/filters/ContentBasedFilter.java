@@ -1,6 +1,10 @@
 package io.datajek.spring.basics.movierecommendersystem.filters;
 
 import io.datajek.spring.basics.movierecommendersystem.movie.Movie;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
@@ -10,12 +14,14 @@ import java.util.Objects;
 @Primary
 public class ContentBasedFilter implements Filter {
     private static int instances = 0;
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final Movie movie;
 
     public ContentBasedFilter(Movie movie) {
         this.movie = Objects.requireNonNull(movie);
         instances++;
-        System.out.println("ContentBasedFilter instance no. " + instances + " created");
+        logger.info("In ContentBasedFilter constructor method");
     }
 
     public static int getInstances() {
@@ -29,5 +35,15 @@ public class ContentBasedFilter implements Filter {
 
     public Movie getMovie() {
         return movie;
+    }
+
+    @PostConstruct
+    public void postConstruct() {
+        logger.info("In ContentBasedFilter postConstruct method..");
+    }
+
+    @PreDestroy
+    public void preDestroy() {
+        logger.info("In ContentBasedFilter preDestroy method..");
     }
 }
