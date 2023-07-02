@@ -1,11 +1,18 @@
 package io.datajek.spring.basics.movierecommendersystem;
 
-import io.datajek.spring.basics.movierecommendersystem.filters.ContentBasedFilter;
-import io.datajek.spring.basics.movierecommendersystem.movie.Movie;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
 
 @SpringBootApplication
+@ComponentScan(basePackages = {
+        "io.datajek.spring.basics.otherPackage",
+})
+@ComponentScan(includeFilters = @ComponentScan.Filter(
+        type = FilterType.REGEX,
+        pattern = "io.datajek.spring.basics.movierecommendersystem.*"
+))
 public class MovieRecommenderSystemApplication {
 
     public static void main(String[] args) {
@@ -13,21 +20,10 @@ public class MovieRecommenderSystemApplication {
                 MovieRecommenderSystemApplication.class, args
         );
 
-        final var filter = appContext.getBean(ContentBasedFilter.class);
-        System.out.println("\n ContentBasedFilter bean with singleton scope");
-        System.out.println(filter);
-
-        final var movie1 = filter.getMovie();
-        final var movie2 = filter.getMovie();
-        final var movie3 = filter.getMovie();
-
-        System.out.println("\n Movie bean with prototype scope");
-        System.out.println("movie1: " + movie1);
-        System.out.println("movie2: " + movie2);
-        System.out.println("movie3: " + movie3);
-
-        System.out.println("\n ContentBasedFilter instances: " + ContentBasedFilter.getInstances());
-        System.out.println("Movie instances: " + Movie.getInstances());
+        System.out.println("OtherFilter bean found = " +
+                appContext.containsBean("OF"));
+        System.out.println("CollaborativeFilter bean found = " +
+                appContext.containsBean("CF"));
     }
 
 }
