@@ -1,15 +1,33 @@
 package io.datajek.springdata.tennisplayer.models;
 
+import jakarta.persistence.*;
+
+import java.sql.Date;
 import java.time.Instant;
 
+@Entity
+@Table(name = "player")
+@NamedQuery(name = "get_all_players", query="select p from Player p")
 public class Player {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
     private String name;
     private String nationality;
+
     private Instant birthDate;
     private int titles;
 
-    public Player() {
+    public Player( ) {
+
+    }
+
+    public Player(String name, String nationality, Instant birthDate, int titles) {
+        super();
+        this.name = name;
+        this.nationality = nationality;
+        this.birthDate = birthDate;
+        this.titles = titles;
     }
 
     public Player(int id, String name, String nationality, Instant birthDate, int titles) {
@@ -21,54 +39,52 @@ public class Player {
         this.titles = titles;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
-
-    public void setBirthDate(Instant birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public void setTitles(int titles) {
-        this.titles = titles;
-    }
-
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getNationality() {
         return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
     }
 
     public Instant getBirthDate() {
         return birthDate;
     }
 
+    public void setBirthDate(Instant birthDate) {
+        this.birthDate = birthDate;
+    }
+
     public int getTitles() {
         return titles;
     }
 
+    public void setTitles(int titles) {
+        this.titles = titles;
+    }
+
     @Override
     public String toString() {
-        return "Player{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", nationality='" + nationality + '\'' +
-                ", birthDate=" + birthDate +
-                ", titles=" + titles +
-                '}';
+        return "\nPlayer [id= " + id + ", name= " + name + ", nationality= " + nationality + ", birthDate= " + birthDate
+                + ", titles= " + titles + "]";
     }
+
+
+
 }
