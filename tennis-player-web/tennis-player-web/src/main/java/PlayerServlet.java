@@ -7,9 +7,10 @@ import java.io.IOException;
 
 @WebServlet("/player.do")
 public class PlayerServlet extends HttpServlet {
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String playerName = request.getParameter("name");
+        request.setAttribute("name", playerName);
         request.getRequestDispatcher("WEB-INF/views/welcome.jsp").forward(request, response);
     }
 
